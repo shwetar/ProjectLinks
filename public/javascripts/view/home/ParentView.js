@@ -1,5 +1,5 @@
 'use strict'
-//Backbone.pubSub = _.extend({}, Backbone.Events);
+
 var ParentView = Backbone.View.extend({
 	tagName:'li',
 
@@ -21,8 +21,7 @@ var ParentView = Backbone.View.extend({
 		var self =this;
 		$.post("/api/children/search", {parentId: this.model.id}, function(resp){
             if(resp.success){
-            	alert(resp);
-               	var childCollection = new ChildList();
+            	var childCollection = new ChildList();
                	var children = resp.children;
 				_.each(children, function(child){
 		        	childCollection.push(new Child(child));
@@ -34,7 +33,7 @@ var ParentView = Backbone.View.extend({
 				cb(self);
 			}
             else{
-                alert(resp);
+                console.log("Error in ParentView"+resp);
             }		
 		
 		

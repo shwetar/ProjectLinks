@@ -1,12 +1,9 @@
 'use strict';
 
 var HomeView = Backbone.View.extend({
-    el: $('body'),
     template: _.template($("#home-template").html()),
     events: {
-        //'click .add-link-button': 'addLink',
         'click .add-parent-button': 'addParent'
-        //'submit #add-link-form': 'addLink'
     },
 
     initialize: function(options) {
@@ -22,7 +19,6 @@ var HomeView = Backbone.View.extend({
     },
 
     render: function() {
-        //alert("options"+this.options.id)   
         this.$el.html(this.template({}));
         var parentListView;
         $.post("/api/parents/search", {id: this.options.id}, function(resp){
@@ -35,18 +31,19 @@ var HomeView = Backbone.View.extend({
                 //});
                 parentListView = new ParentListView({ collection: parentCollection });
                 $(".sidebar-container").append(parentListView.render().el);
-                //return this;
+                
             }
             else{
-                alert(resp);
+                console.log("Homeview"+resp);
             }
         });
 
+        return this;
         
     }
 });
 
 
-//new HomeView();
+
 
 

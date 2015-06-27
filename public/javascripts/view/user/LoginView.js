@@ -13,12 +13,10 @@ var LoginView = Backbone.View.extend({
       $.post("/api/users/login", {userName: userName, password: password}, function(resp){
 
         if(resp.success){
-          // console.log("success"+resp.success);
-          // console.log("id"+resp.id);
-          window.location.hash = "home/"+resp.id;
+         window.location.hash = "home/"+resp.id;
         }
         else{
-          alert(resp);
+          console.log("Error in Login"+resp);
         }
       });
     },

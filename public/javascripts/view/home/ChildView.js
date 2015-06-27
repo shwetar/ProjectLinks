@@ -3,12 +3,18 @@ var ChildView = Backbone.View.extend({
 	tagName:'li',
 	template: _.template($("#child-template").html()),
 	events: {
-    'click .child': 'showLinks'
+    'click .child': 'showLinks',
+    //'click #add-link-button':'addLink'
   	},
 	showLinks:function(event){
-		var childlinks=$(event.currentTarget).data("child").links;
-  	new ListContent({el: $(".list-container"), links: childlinks}).render();
+    event.preventDefault();
+    this.currentChild=$(event.currentTarget).data("child");
+    this.currentId = $(event.currentTarget).data("id");
+		new ListContent({el: $(".list-container"),currentChild:this.currentChild});
+    return this;
+    //event.stopPropagation();
   },
+  
 	render: function(){
     this.$el.html( this.template({childvar:this.model.toJSON()}));
     return this;  

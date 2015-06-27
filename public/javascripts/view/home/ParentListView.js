@@ -1,5 +1,5 @@
 'use strict';
-//Backbone.pubSub = _.extend({}, Backbone.Events);
+
 var ParentListView = Backbone.View.extend({
   tagName: 'ul',
   className:'.parents-list',
@@ -11,7 +11,7 @@ var ParentListView = Backbone.View.extend({
         this.$el.append(data.el);
       }.bind(this));
     }, this);
-  return this; // returning this for chaining..
+  return this;
   },
   
 });

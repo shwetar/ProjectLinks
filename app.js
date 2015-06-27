@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
+console.log("which directory"+__dirname);
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.use('/api/parents', parents);

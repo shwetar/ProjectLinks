@@ -16,12 +16,10 @@ var SignupView = Backbone.View.extend({
       $.post("/api/users/signup", {username: userName, password: password}, function(resp){
 
         if(resp.success){
-          // console.log("success"+resp.success);
-          // console.log("id"+resp.id);
           window.location.hash = "login";
         }
         else{
-          alert("Error in signup"+resp);
+          console.log("Error in signup"+resp);
         }
       });
     },

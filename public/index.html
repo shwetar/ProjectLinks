@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>KiddoLinks</title>
+  <title>These are my Favorite Links</title>
   <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
@@ -22,9 +22,9 @@
       <div id="home-page">
         <div class="main-content-container">
             <div class="sidebar-container col-md-4 tree well">
-                 <div class="navigation">
-                   <button type="button" class="btn btn-default add-friend" data-toggle="modal" data-target="#addParent">Add Parent</button>
-                 </div>
+                 <!-- <div class="navigation">
+                    <button type="button" class="btn btn-default add-friend" data-toggle="modal" data-target="#addParent">Add Parent</button>
+                 </div>-->
             <ul class="fav-childrens-list"></ul>
              <ul class="public-childrens-list"></ul>
             </div>
@@ -52,26 +52,35 @@
         
       </div>
   </script>
-  
-  <script type="text/template" id="signup-template">
-    <div id="signup-page">
-      Username <input type="text" name="username" class="username" />
-      Password <input type="password" name="password" class="password"/>
-      <button id="signup">Signup</button>
-      <div>
-        <a href="#login" class="login-page-redirect">Login</a>
-      </div>
-    </div>
-  </script>
 
-  <script type="text/template" id="header-template"> 
+  <script type="text/template" id="signup-template">
+    <div class ="row text-center "id="signup-page">
+        <h2>Please login/Signup</h2>
+        <div class="row"style="margin-top:40px;">
+          <div class="col-md-6 text-right"><h4>Username:</h4></div>
+          <div class="col-md-6 text-left"><input type="text" name="username" class="username"/></div>
+         </div>
+         <div class=row> 
+          <div class="col-md-6 text-right"><h4>Password:</h4> </div>
+          <div class="col-md-6 text-left"><input type="password" name="password" class="password" /></div>
+         </div class="row">
+          <button id="signup">Signup</button>
+          <a href="#login" class="login-page-redirect">Login</a>
+        </div>
+        
+      </div>
+  </script>
+  
+
+
+  <!--<script type="text/template" id="header-template"> 
     <header>
         <h1>Welcome to your favorite links</h1>
         <a href="#add-friend" class="add-friend">Add a Friend</a>
         <a href="#add-link" class="add-link">Add a Link</a>
     </header>
    </script>
-
+  -->
    <script type="text/template" id="parents-list-template">
     </script>
   
@@ -79,13 +88,14 @@
         <div class="alert alert-error alert-danger fade out hidden">
             <strong>Error!</strong> Invalid URL.
         </div>
-        <h1>Favorite Links</h1>
+       
         <ul>
             <%
-                _.each(childlinks, function(link,key,list){
+                _.each(childlinks, function(link,idx,list){
             %>
                 <li>
                     <a href="<%= link%>" target="_blank"><%= link%></a>
+                    <button class="btn btn-primary" data-link ="<%= idx%>" id="delete-link-button">Delete Link</button>
                 </li>
             <%
                 });
@@ -93,8 +103,8 @@
         </ul>
         
         <form id="add-link-form">
-          <input type="text" class="link-name" name="link-name" placeholder="http://www.friv.com" />
-          <button type="button" class="btn btn-primary add-link-button">Add Link</button>
+          <input type="text" class="link-name" name="link-name" placeholder="http://www.friv.com"/>
+          <button class="btn btn-primary" id="add-link-button">Add Link</button>
         </form>
        
    </script>
@@ -106,7 +116,7 @@
   </script>
 
   <script type="text/template" id="child-template">
-  <span class="child" data-child='<%=JSON.stringify(childvar)%>'><i></i><%= childvar.name %></span>
+  <span class="child" data-id='<%=childvar.id%>' data-child='<%=JSON.stringify(childvar)%>'><%= childvar.name %></span>
   </script>
 
   <script type="text/template" id="add-child-template">

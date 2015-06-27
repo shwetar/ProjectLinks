@@ -22,8 +22,8 @@ var myRouter = Backbone.Router.extend({
         if (this.home == null) {
             this.home = new HomeView({id:id});
         }
-        //this.container.myChildView = this.home;
-        //this.container.render();
+        this.container.myChildView = this.home;
+        this.container.render();
     },
 
     loginRoute: function () {

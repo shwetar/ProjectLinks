@@ -14,8 +14,12 @@ h1 {
   padding-top: 25px;
 }
 
+.well{
+  background-color:#D3F4D4;
+}
 
-#login-page{
+
+#login-page, #signup-page{
       padding-top: 80px;
     color: rgb(232, 46, 131);
 }
